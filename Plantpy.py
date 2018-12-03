@@ -4,7 +4,6 @@ import time
 
 """Test for raspberry pi with sensor"""
 
-
 def callback(channel):
     if GPIO.input(channel):
         print("LED OFF")
