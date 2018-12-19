@@ -30,7 +30,7 @@ def getsensorAPI():
 
     return response
 
-
+#Post to Sensor
 def postToSensorAPI():
     url = "http://webplant.azurewebsites.net/api/soilsensordatas"
     dir = {'MoistInt': 1, 'timestamp': 1337}
