@@ -7,8 +7,12 @@ except(ModuleNotFoundError):
 
 tk = tkinter.Tk()
 
-def GUI(str, strinfo):
 
+def GUI(strinfo):
+
+    print(strinfo)
+    strtemp = strinfo['dd']['temperature']
+    strlux = strinfo['dd']['light']
 
     tk.resizable(0, 0)
     tk.configure(background='white')
@@ -28,6 +32,8 @@ def GUI(str, strinfo):
     background_label = tkinter.Label(tk, image=filename)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
+    label_lux = tkinter.Label(tk, text=""+str(strlux), bg="white", fg='grey')
+    label_temp = tkinter.Label(tk, text="" + str(strtemp)+" °C", bg="white", fg='grey')
 
     def inc():
         korv = open('num.txt', 'r+')
@@ -42,7 +48,17 @@ def GUI(str, strinfo):
             y = 1
 
         korv.write((y.__str__()))
+        forgetalllabels()
         korv.close()
+        return y
+
+    def inc2(y):
+
+        korv = open('num.txt', 'w+')
+
+        korv.write((y.__str__()))
+        korv.close()
+
         return y
 
     def callback():
@@ -52,6 +68,30 @@ def GUI(str, strinfo):
 
         #img2 = tkinter.PhotoImage(file="1.png")
         filename.configure(file=("%i.png" % inc()))
+
+    def forgetalllabels():
+        label_lux.place_forget()
+        label_temp.place_forget()
+
+    def tempclick():
+        forgetalllabels()
+        filename.configure(file=("%i.png" % inc2(6)))
+        label_temp.config(font=("Press Start 2P", 25))
+        label_temp.place(x=573, y=130, height=50, width=150)
+
+    def sunclick():
+        forgetalllabels()
+        filename.configure(file=("%i.png" % inc2(9)))
+        label_lux.config(font=("Pontano Sans", 25))
+        label_lux.place(x=573, y=130, height=50, width=150)
+
+    def waterclick():
+        forgetalllabels()
+        filename.configure(file=("%i.png" % inc2(4)))
+
+
+
+
 
     b = tkinter.Button(tk, command=pic, bg="white", height = 63, width = 63, borderwidth=0)
     poly = tkinter.PhotoImage(file="Polygonl.png")
@@ -63,30 +103,36 @@ def GUI(str, strinfo):
     b2.config(image = poly2)
     b2.place(x=200, y=385)
 
-    b3 = tkinter.Button(tk, command=pic, bg="white", height = 63, width = 63, borderwidth=0)
+    b3 = tkinter.Button(tk, command=tempclick, bg="white", height = 63, width = 63, borderwidth=0)
     poly3 = tkinter.PhotoImage(file="temp.png")
     b3.config(image = poly3)
     b3.place(x=614, y=380)
 
-    b4 = tkinter.Button(tk, command=pic, bg="white", height = 63, width = 63, borderwidth=0)
+    b4 = tkinter.Button(tk, command=sunclick, bg="white", height = 63, width = 63, borderwidth=0)
     poly4 = tkinter.PhotoImage(file="sun.png")
     b4.config(image = poly4)
     b4.place(x=695, y=380)
 
-    b5 = tkinter.Button(tk, command=pic, bg="#3EBAFF", height = 63, width = 63, borderwidth=0)
+    b5 = tkinter.Button(tk, command=waterclick, bg="#3EBAFF", height = 63, width = 63, borderwidth=0)
     poly5 = tkinter.PhotoImage(file="Group.png")
     b5.config(image = poly5)
     b5.place(x=535, y=380)
-
-
-
-
     """
-    label2 = tkinter.Label(tk, text="Hejhopp")
-    label2.config(font=("Pontano Sans", 44))
-    label2.place(x=200, y=385)
-    """
+    label2 = tkinter.Label(tk, text="")
+    label2.config(text="Hejhopp korv"+str(strtemp))
+    label2.config(font=("MS", 44))
+    label2.place(x=200, y=385)"""
 
+    label2 = tkinter.Label(tk, text="I am easy \n to take care\n of and need\n partial shade and \neven temperatures."
+                                    "\nI am well known \n for being able\n to purify\n the air\n", bg="white")
+    label2.config(font=("Pontano Sans", 15))
+    label2.place(x=30, y=60, height=320, width=249)
+
+    label3 = tkinter.Label(tk, text="I am a Dracaena Rikki", bg="white")
+    label3.place(x=50, y=50, height=30, width=200)
+    label3.config(font=("Pontano Sans", 15))
+    """
+    """
 
     tk.mainloop()
 

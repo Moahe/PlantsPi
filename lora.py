@@ -8,7 +8,9 @@ from GUI import GUI
 str = ""
 strinfo = ""
 
+
 def loraAPIconnection():
+
     """Hej"""
     file_object = open("loraurl.txt", "r")
     plane = '3'
@@ -22,6 +24,8 @@ def loraAPIconnection():
     str = 'Våning %s sensor %s:' % (plane, sensor)
     strinfo = 'Tid: %s\n timestamp: %s\n Temperature: %s\nHumidity: %s\nLight: %s\n' % (data[0]['time'], data[0]['ts'], data[0]['dd']['temperature'], data[0]['dd']['humidity'], data[0]['dd']['light'])
     strinfo = strinfo+'Movement: %s\n Battery: %s\n' %( data[0]['dd']['pir'],  data[0]['dd']['vdd'])
+    return data[0]
+
 
 
 def getsensorAPI():
@@ -40,6 +44,5 @@ def postToSensorAPI():
 
     return post
 
-
 #print(getsensorAPI())
-GUI(str, strinfo)
+GUI(loraAPIconnection())
