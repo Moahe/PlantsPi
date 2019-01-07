@@ -38,7 +38,7 @@ def GUI(str, strinfo):
         y = int(i)
         print(y)
         y = y+1
-        if y > 10:
+        if y > 11:
             y = 1
 
         korv.write((y.__str__()))
@@ -53,8 +53,40 @@ def GUI(str, strinfo):
         #img2 = tkinter.PhotoImage(file="1.png")
         filename.configure(file=("%i.png" % inc()))
 
-    b = tkinter.Button(tk, text="    ", command=pic, bg="white")
+    b = tkinter.Button(tk, command=pic, bg="white", height = 63, width = 63, borderwidth=0)
+    poly = tkinter.PhotoImage(file="Polygonl.png")
+    b.config(image = poly)
+    b.place(x=38, y=385)
 
-    b.place(x=760, y=440)
+    b2 = tkinter.Button(tk, command=pic, bg="white", height = 63, width = 63, borderwidth=0)
+    poly2 = tkinter.PhotoImage(file="Polygonr.png")
+    b2.config(image = poly2)
+    b2.place(x=200, y=385)
+
+    b3 = tkinter.Button(tk, command=pic, bg="white", height = 63, width = 63, borderwidth=0)
+    poly3 = tkinter.PhotoImage(file="temp.png")
+    b3.config(image = poly3)
+    b3.place(x=614, y=380)
+
+    b4 = tkinter.Button(tk, command=pic, bg="white", height = 63, width = 63, borderwidth=0)
+    poly4 = tkinter.PhotoImage(file="sun.png")
+    b4.config(image = poly4)
+    b4.place(x=695, y=380)
+
+    b5 = tkinter.Button(tk, command=pic, bg="#3EBAFF", height = 63, width = 63, borderwidth=0)
+    poly5 = tkinter.PhotoImage(file="Group.png")
+    b5.config(image = poly5)
+    b5.place(x=535, y=380)
+
+
+
+
+    """
+    label2 = tkinter.Label(tk, text="Hejhopp")
+    label2.config(font=("Pontano Sans", 44))
+    label2.place(x=200, y=385)
+    """
+
+
     tk.mainloop()
 
