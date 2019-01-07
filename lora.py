@@ -9,6 +9,7 @@ str = ""
 strinfo = ""
 
 def loraAPIconnection():
+    """Hej"""
     file_object = open("loraurl.txt", "r")
     plane = '3'
     sensor = '3'
